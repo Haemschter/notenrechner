@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Notenrechner
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            bool replay = true;
+            string punktzahlinput;
+            double punktzahl;
+            double note = 0;
+            double rechnung;
+            while (replay == true)
+            {
+                Console.Clear();
+                Console.WriteLine("Bitte geben Sie die erreichte Punktzahl ein");
+                punktzahlinput = Console.ReadLine();
+                Console.Clear();
+                if (!Double.TryParse(punktzahlinput, out punktzahl) || !(punktzahl <= 60))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Bitte einen Zahlenwert zwischen 0 und 60 eingeben.");
+                    Console.ReadKey();
+                }
+                else
+                {
+                    if(punktzahl <=20)
+                    {
+                        note = 5;
+                    }
+                    else
+                    {
+                        rechnung = 70 - punktzahl;
+                        note = rechnung / 10 ;
+                    }
+                    Console.WriteLine("Note:");
+                    Console.WriteLine("|--->{0}<---|", note);
+                    Console.WriteLine("###########");
+                    Console.WriteLine("Punkte:");
+                    Console.WriteLine("|--->{0}<---|", punktzahl);
+                    Console.ReadKey();
+                }
+            }
+        }
+    }
+}
